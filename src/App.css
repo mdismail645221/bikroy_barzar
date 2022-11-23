@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,15 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+.btn-primary{
+  background-color: #F50808;
+  /* background: linear-gradient(to top right, #ff0066 6%, #dd0a0a 100%); */
+}
+.btn-primary:hover {
+  background-color: #b90a0a;
+  /* background: linear-gradient(to top right, #ff0066 6%, #ff0000 100%); */
+
 }

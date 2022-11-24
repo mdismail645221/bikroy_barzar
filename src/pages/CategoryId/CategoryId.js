@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import Category from '../../components/Categories/Category';
+import CtgProduct from './CtgProduct';
+
 
 const CategoryId = () => {
 
@@ -24,12 +25,12 @@ const CategoryId = () => {
             </div>
             <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
-                    categories.map(ctg => <Category
+                    categories.map(ctg => <CtgProduct
                         key={ctg.id}
                         ctg={ctg}
                     >
 
-                    </Category>)
+                    </CtgProduct>)
                 }
             </div>
         </section>

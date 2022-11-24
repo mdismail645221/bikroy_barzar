@@ -10,10 +10,6 @@ const Category = ({ ctg }) => {
                 <div className="card-body">
                     <h2 className="card-title">{ctg?.brand}{ctg?.name} </h2>
                 </div>
-                <div>
-                    <p>location: {}</p>
-                    <p></p>
-                </div>
             </div>
         </Link>
     );

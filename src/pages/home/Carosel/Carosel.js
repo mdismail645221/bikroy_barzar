@@ -2,7 +2,7 @@ import React from 'react';
 import phone1 from '../../../assets/images/phone1.jpg'
 import phone2 from '../../../assets/images/phone2.png'
 import phone3 from '../../../assets/images/phone3.png'
-import phone4 from '../../../assets/images/phone4.jpg'
+// import phone4 from '../../../assets/images/phone4.jpg'
 
 const Carosel = () => {
     return (
@@ -15,7 +15,7 @@ const Carosel = () => {
                 </div>
                 <div className="hero bg-base-200 z-1">
                     <div className="hero-content flex-col lg:flex-row-reverse">
-                        <img src={phone1} className="max-w-sm h-[300px] md:h-[500px] rounded-lg shadow-2xl" />
+                        <img src={phone1} className="max-w-sm h-[300px] md:h-[500px] rounded-lg shadow-2xl" alt='sampony' />
                         <div className='w-1/2'>
                             <h1 className="text-5xl font-bold">SAMPNONY 2020</h1>
                             <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
@@ -32,9 +32,9 @@ const Carosel = () => {
                 </div>
                 <div className="hero bg-base-200 z-1">
                     <div className="hero-content flex-col lg:flex-row-reverse">
-                        <img src={phone2} className="max-w-sm h-[300px] md:h-[500px] rounded-lg shadow-2xl bg-[F2F2F2]" />
+                        <img src={phone2} className="max-w-sm h-[300px] md:h-[500px] rounded-lg shadow-2xl bg-[F2F2F2]"  alt='oppo x pro'/>
                         <div className='w-1/2'>
-                            <h1 className="text-5xl font-bold">NOKIA 12 PRO</h1>
+                            <h1 className="text-5xl font-bold">OPPO X PRO</h1>
                             <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                             <button className="btn btn-primary">Get Started</button>
                         </div>
@@ -50,9 +50,9 @@ const Carosel = () => {
 
                 <div className="hero bg-base-200 z-1">
                     <div className="hero-content flex-col lg:flex-row-reverse">
-                        <img src={phone3} className="max-w-sm h-[300px] md:h-[500px] rounded-lg shadow-2xl" />
+                        <img src={phone3} className="max-w-sm h-[300px] md:h-[500px] rounded-lg shadow-2xl" alt='nokiya phone'/>
                         <div className='w-1/2'>
-                            <h1 className="text-5xl font-bold">Box Office News!</h1>
+                            <h1 className="text-5xl font-bold">NOKIYA A 250</h1>
                             <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                             <button className="btn btn-primary">Get Started</button>
                         </div>

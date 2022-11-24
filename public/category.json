@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "name": "Huawei Y6p Official",
+        "image" : "https://i.ibb.co/jyN08Sg/Huawei-Y6p-Official-image.jpg",
+        "resalePrice":7000,
+        "originalPrice": 15000,
+        "yearsOfUse": "2.5 years",
+        "sellerName": "Shawkat Faisal Moheet"
+    },
+    {
+        "id": 2,
+        "name": "Samsung Galaxy A04s",
+        "image" : "https://i.ibb.co/5FCvZdt/samsung-galaxy-a04s-3.jpg",
+        "resalePrice":10000,
+        "originalPrice": 35000,
+        "yearsOfUse": "6 Monthly",
+        "sellerName": "Shawkat Jamil Maheen"
+    },
+    {
+        "id": 3,
+        "name": "Huawei-P30-Lite-Official",
+        "image" : "https://i.ibb.co/SPJZ5h2/Huawei-P30-Lite-Official-image-500x500.webp",
+        "resalePrice":9900,
+        "originalPrice": 26000,
+        "yearsOfUse": "1 years",
+        "sellerName": "Tasnim Hossain"
+    }
+]

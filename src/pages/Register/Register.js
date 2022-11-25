@@ -10,6 +10,7 @@ const Register = () => {
     const [regError, setRegError] = useState('')
     const { registerUser, updateUser, googleSignIn } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [options, setOption] = useState('buyers')
 
 
 
@@ -29,11 +30,13 @@ const Register = () => {
                         displayName: data.name,
                         photoURL: imgData.data.display_url
                     }
-                    console.log(userInfo)
                     updateUser(userInfo)
                         .then(() => {
                             // savedUser(data.name, data.email)
                             toast.success("successfully Registered. Good Job")
+                            // const option ={
+                            //     options : data.options
+                            // }
                             savedUser(data.name, data.email, data.options)
                         })
                         .catch(err => {
@@ -62,6 +65,7 @@ const Register = () => {
                 console.log(user)
                 // form.reset()
                 toast("Successfully Login Good job", { duration: 3000 })
+                savedUser(user.name, user.email, options)
                 //  navigate(from, { replace: true })
             })
             .catch(err => {
@@ -76,7 +80,7 @@ const Register = () => {
     const savedUser = (name, email, options) => {
         const userInfo = { name, email, options };
         console.log(userInfo)
-        fetch(`${process.env.REACT_APP_WEB_URL}/users`, {
+        fetch('http://localhost:5000/users',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

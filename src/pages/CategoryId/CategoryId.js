@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import BookingModal from '../../components/BookingModal/BookingModal';
 import CtgProduct from './CtgProduct';
@@ -7,16 +7,13 @@ import CtgProduct from './CtgProduct';
 
 const CategoryId = () => {
 
-    // const { data: categories = [], isLoading } = useQuery({
-    //     queryKey: ["categories"],
-    //     queryFn: async () => {
-    //         const res = await fetch(`${process.env.REACT_APP_WEB_LINK}/categories`);
-    //         const data = await res.json();
-    //         return data;
-    //     }
-    // })
+
+
     const phones = useLoaderData();
-    const categories = (phones)
+
+    const handleProduct = (data) => {
+        console.log(data)
+    }
 
     return (
         <section className='container mx-auto pb-24'>
@@ -26,11 +23,11 @@ const CategoryId = () => {
             </div>
             <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
-                    categories.map(ctg => <CtgProduct
+                    phones.map(ctg => <CtgProduct
+                        handleProduct={handleProduct}
                         key={ctg.id}
                         ctg={ctg}
                     >
-
                     </CtgProduct>)
                 }
             </div>

@@ -1,7 +1,10 @@
 import React from 'react';
 
-const CtgProduct = ({ctg}) => {
-    console.log(ctg)
+const CtgProduct = ({ ctg, handleProduct }) => {
+
+
+
+    // console.log(ctg, setProducts)
     return (
         <div className="card bg-base-100 shadow-xl">
             <figure><img src={ctg?.image} className="h-[400px]" alt="Shoes" /></figure>
@@ -20,7 +23,7 @@ const CtgProduct = ({ctg}) => {
                     {/* <p><strong>Original Price:</strong> {ctg?.originalPrice}</p> */}
                 </div>
                 <div>
-                    <label htmlFor="BookingModal" className="btn">open modal</label>
+                    <label onClick={() => handleProduct(ctg)} htmlFor="BookingModal" className="btn">open modal</label>
                 </div>
             </div>
         </div>

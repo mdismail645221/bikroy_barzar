@@ -5,6 +5,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/home/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -33,8 +34,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <CategoryId></CategoryId>,
-                loader: async ({ params }) => await fetch(`${process.env.REACT_APP_WEB_LINK}/categories/${params.id}`)
+                element: <PrivateRoute><CategoryId></CategoryId></PrivateRoute>,
+                loader: async ({ params }) => await fetch(`http://localhost:5000/products/${params.id}`)
             },
         ]
     }

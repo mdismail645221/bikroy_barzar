@@ -16,7 +16,7 @@ const CategoryId = () => {
     //     }
     // })
     const phones = useLoaderData();
-    const categories = (phones.products)
+    const categories = (phones)
 
     return (
         <section className='container mx-auto pb-24'>

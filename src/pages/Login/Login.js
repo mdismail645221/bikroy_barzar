@@ -3,12 +3,15 @@ import { AuthContext } from '../../context/AuthProvider';
 import { useForm } from "react-hook-form"
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { toast } from 'react-hot-toast'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [regError, setRegError] = useState('')
     const { signInUser, googleSignIn } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const  navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
 
     const handleLogin = (data) => {
@@ -16,7 +19,8 @@ const Login = () => {
         signInUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
+                navigate(from, { replace: true });
             })
             .catch((error) => {
                 console.log(error)

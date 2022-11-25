@@ -14,6 +14,7 @@ const Register = () => {
 
 
     const handleRegister = data => {
+        console.log(data)
         // const [imgURL, setImgURL] = useState()
         const imageFile = (data.image[0])
 
@@ -33,6 +34,7 @@ const Register = () => {
                         .then(() => {
                             // savedUser(data.name, data.email)
                             toast.success("successfully Registered. Good Job")
+                            savedUser(data.name, data.email, data.options)
                         })
                         .catch(err => {
                             console.log(err)
@@ -51,8 +53,6 @@ const Register = () => {
     }
 
 
-
-
     // handle Google signIn method implement====>
      // google sign in 
      const handlegoogle = () => {
@@ -68,6 +68,27 @@ const Register = () => {
                 //  setError(err.message)
                 console.log(err)
             })
+    }
+
+
+
+    // ======SavedUser in database======//
+    const savedUser = (name, email, options) => {
+        const userInfo = { name, email, options };
+        console.log(userInfo)
+        fetch(`${process.env.REACT_APP_WEB_URL}/users`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                // setCreateUserEmail(email)
+            })
+
     }
 
 
@@ -110,6 +131,15 @@ const Register = () => {
                         {...register("image", { required: "image field is required" })}
                     />
                     {errors.image && <p className='text-red-600 font-semibold'>{errors?.image?.message}</p>}
+                </div>
+                {/* Opition choice buyers & sellers*/}
+                <div className='form-control w-full max-w-xs'>
+                    <label className='label'><span className='label-text'>Choice your options:</span></label>
+                    <select {...register("options", { required: "field is required" })} className="select select-bordered w-full max-w-xs">
+                        <option  value="buyers">buyers</option>
+                        <option value="Sellers">Sellers</option>
+                    </select>
+                    {errors.password && <p className='text-red-600 font-semibold'>{errors?.password?.message}</p>}
                 </div>
 
                 {/* submit field */}

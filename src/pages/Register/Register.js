@@ -37,7 +37,7 @@ const Register = () => {
                             // const option ={
                             //     options : data.options
                             // }
-                            savedUser(data.name, data.email, data.options)
+                            savedUser(data.name, data.email, data.role)
                         })
                         .catch(err => {
                             console.log(err)
@@ -77,8 +77,8 @@ const Register = () => {
 
 
     // ======SavedUser in database======//
-    const savedUser = (name, email, options) => {
-        const userInfo = { name, email, options };
+    const savedUser = (name, email, role) => {
+        const userInfo = { name, email, role };
         console.log(userInfo)
         fetch('http://localhost:5000/users',{
             method: 'POST',
@@ -139,7 +139,7 @@ const Register = () => {
                 {/* Opition choice buyers & sellers*/}
                 <div className='form-control w-full max-w-xs'>
                     <label className='label'><span className='label-text'>Choice your options:</span></label>
-                    <select {...register("options", { required: "field is required" })} className="select select-bordered w-full max-w-xs">
+                    <select {...register("role", { required: "field is required" })} className="select select-bordered w-full max-w-xs">
                         <option  value="buyers">buyers</option>
                         <option value="Sellers">Sellers</option>
                     </select>

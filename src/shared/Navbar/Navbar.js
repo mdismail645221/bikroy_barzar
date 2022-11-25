@@ -22,12 +22,12 @@ const Navbar = () => {
         </Link>
         </li>
         <li><Link
-            to="/ctg"
+            to="/dashboard"
             className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
             aria-label="Sign up"
-            title="Category"
+            title="Dashboard"
         >
-            Category
+            Dashboard
         </Link>
         </li>
         {
@@ -59,6 +59,7 @@ const Navbar = () => {
                     </Link>
                 </li>
         }
+                
     </>
 
 

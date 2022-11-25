@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashboardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
 import CategoryId from "../pages/CategoryId/CategoryId";
+import DeashBoard from "../pages/DeashBoard/DeashBoard";
+import AddProduct from "../pages/DeashBoard/Sellers/AddProduct/AddProduct";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/home/Home/Home";
 import Login from "../pages/Login/Login";
@@ -36,7 +39,21 @@ const router = createBrowserRouter([
                 path: '/category/:id',
                 element: <PrivateRoute><CategoryId></CategoryId></PrivateRoute>,
                 loader: async ({ params }) => await fetch(`http://localhost:5000/products/${params.id}`)
+            }
+        ]
+    }, 
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <DeashBoard></DeashBoard>
             },
+            {
+                path: '/dashboard/addproducts',
+                element: <AddProduct></AddProduct>
+            }
         ]
     }
 ])

@@ -1,4 +1,6 @@
+import { data } from 'autoprefixer';
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthProvider';
 
 const BookingModal = ({ bookProducts }) => {
@@ -19,7 +21,21 @@ const BookingModal = ({ bookProducts }) => {
             phoneNumber,
             metingLocation
         }
-        console.log(booking)
+        fetch(`${process.env.REACT_APP_WEB_LINK}/bookings`, {
+            method: 'POST',
+            headers: {
+                "content-type" : "application/json"
+            },
+            body: JSON.stringify(booking)
+        })
+        .then(res=> res.json())
+        .then(data=> {
+            toast.success('Successfully your order booking. Good Job.')
+            console.log(data)
+        })
+        .catch((error)=> {
+            toast.error(error.message)
+        })
     }
 
 

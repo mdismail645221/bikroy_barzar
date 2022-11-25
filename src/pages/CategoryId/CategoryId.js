@@ -7,13 +7,17 @@ import CtgProduct from './CtgProduct';
 
 const CategoryId = () => {
 
+    const [bookProducts, setBookProducts] = useState({})
+
 
 
     const phones = useLoaderData();
 
     const handleProduct = (data) => {
-        console.log(data)
+        // console.log(data)
+        setBookProducts(data)
     }
+
 
     return (
         <section className='container mx-auto pb-24'>
@@ -25,13 +29,16 @@ const CategoryId = () => {
                 {
                     phones.map(ctg => <CtgProduct
                         handleProduct={handleProduct}
-                        key={ctg.id}
+                        key={ctg._id}
                         ctg={ctg}
                     >
                     </CtgProduct>)
                 }
             </div>
-            <BookingModal></BookingModal>
+            <BookingModal
+                bookProducts={bookProducts}
+                setBookProducts={setBookProducts}
+            ></BookingModal>
         </section>
     );
 };

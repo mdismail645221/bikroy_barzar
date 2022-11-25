@@ -23,7 +23,7 @@ const CtgProduct = ({ ctg, handleProduct }) => {
                     {/* <p><strong>Original Price:</strong> {ctg?.originalPrice}</p> */}
                 </div>
                 <div>
-                    <label onClick={() => handleProduct(ctg)} htmlFor="BookingModal" className="btn">open modal</label>
+                    <label onClick={() => handleProduct(ctg)} htmlFor="BookingModal" className="btn">Book Now</label>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../../components/BookingModal/BookingModal';
 import CtgProduct from './CtgProduct';
 
 
@@ -33,6 +34,7 @@ const CategoryId = () => {
                     </CtgProduct>)
                 }
             </div>
+            <BookingModal></BookingModal>
         </section>
     );
 };

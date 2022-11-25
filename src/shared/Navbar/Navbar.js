@@ -1,40 +1,64 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
+import { AuthContext } from '../../context/AuthProvider';
 
 const Navbar = () => {
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { user, logOut } = useContext(AuthContext)
+
 
 
 
     const menuItems = <>
         <li><Link
-                to="/"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                aria-label="Sign up"
-                title="Home"
-            >
-                SHome
-            </Link>
+            to="/"
+            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+            aria-label="Sign up"
+            title="Home"
+        >
+            Home
+        </Link>
         </li>
         <li><Link
-                to="/ctg"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                aria-label="Sign up"
-                title="Category"
-            >
-                Category
-            </Link>
+            to="/ctg"
+            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+            aria-label="Sign up"
+            title="Category"
+        >
+            Category
+        </Link>
         </li>
-        <li><Link
-                to="/login"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                aria-label="Sign up"
-                title="Sign up"
-            >
-                Log In
-            </Link>
-        </li>
+        {
+            user ?
+
+                <>
+                    <li onClick={logOut}>
+                        <Link
+                            className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none'
+                        >Log Out</Link>
+                    </li>
+                    <li>
+                        <div className="avatar online placeholder">
+                            <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
+                                <img src={user?.photoURL} alt="user" />
+                            </div>
+                        </div>
+                    </li>
+                </>
+                :
+                <li>
+                    <Link
+                        to="/login"
+                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                        aria-label="Sign up"
+                        title="Login"
+                    >
+                        Log In
+                    </Link>
+                </li>
+        }
     </>
 
 
@@ -50,13 +74,13 @@ const Navbar = () => {
                         className="inline-flex items-center"
                     >
                         {/* <img className='h-16' src={logo} alt='logo'/> */}
-                        
+
                         <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-                         Bikroy Bazar
+                            Bikroy Bazar
                         </span>
                     </a>
                     <ul className="flex items-center hidden space-x-8 lg:flex">
-                      {menuItems}
+                        {menuItems}
                     </ul>
                     <div className="lg:hidden">
                         <button

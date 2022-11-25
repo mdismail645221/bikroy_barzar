@@ -19,6 +19,9 @@ const CtgProduct = ({ctg}) => {
                     <span><strong>Seller Name:</strong> {ctg?.sellerName}</span>
                     {/* <p><strong>Original Price:</strong> {ctg?.originalPrice}</p> */}
                 </div>
+                <div>
+                    <label htmlFor="BookingModal" className="btn">open modal</label>
+                </div>
             </div>
         </div>
     );

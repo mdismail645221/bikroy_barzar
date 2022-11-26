@@ -8,6 +8,7 @@ import CtgProduct from './CtgProduct';
 const CategoryId = () => {
 
     const [bookProducts, setBookProducts] = useState({})
+    // const [isOpenModal, setIsOpenModal] = useState(true)
 
 
 
@@ -35,10 +36,13 @@ const CategoryId = () => {
                     </CtgProduct>)
                 }
             </div>
-            <BookingModal
-                bookProducts={bookProducts}
-                setBookProducts={setBookProducts}
-            ></BookingModal>
+            {
+                bookProducts && 
+                <BookingModal
+                    bookProducts={bookProducts}
+                    setBookProducts={setBookProducts}
+                ></BookingModal>
+            }
         </section>
     );
 };

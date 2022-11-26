@@ -21,12 +21,11 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                    <ul className="menu p-4 w-80 text-base-content bg-gray-200" style={{borderRight: "2px solid red"}}>
                         {/* <!-- Sidebar content here --> */}
                         {isAdmin === "admin" &&
                             <>
-                            <li><Link to='/dashboard'>All Sellers</Link></li>
-                            <li><Link to='/dashboard/allUsers'>All Buyers</Link></li>
+                            <li><Link to='/dashboard/allusers'>All Users</Link></li>
                             </>
                         }
                         {isAdmin === "buyers" &&

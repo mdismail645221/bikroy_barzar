@@ -26,9 +26,9 @@ const MyProducts = () => {
 
 
     return (
-        <section>
+        <section className='card-body'>
             <div>
-                <h2>My Products</h2>
+                <h2 className='text-2xl font-semibold mb-5'>My Products</h2>
             </div>
             <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {

@@ -82,10 +82,10 @@ const AddProduct = () => {
 
     return (
         <section className='bg-[#f1f1f1]'>
-            <div>
+            <div className='card-body'>
                 <h2 className='text-3xl font-semibold'>Add A Products</h2>
             </div>
-            <form onSubmit={handleSubmit(handLEAddProducts)} className='card-body border border-red-300'>
+            <form onSubmit={handleSubmit(handLEAddProducts)} className='card-body'>
                 <div className="grid gap-5 grid-cols-2 lg:grid-cols-3">
                     <div className="form-control ">
                         <label className="label">

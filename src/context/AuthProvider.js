@@ -54,7 +54,7 @@ const AuthProvider = ({children}) => {
     // sign out user
     const logOut = () => {
         setLoading(true)
-        localStorage.removeItem('jwt_token')
+        localStorage.removeItem('bb_token')
         return signOut(auth)
     }
 

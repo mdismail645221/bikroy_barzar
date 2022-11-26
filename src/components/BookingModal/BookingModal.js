@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthProvider';
 
-const BookingModal = ({ bookProducts }) => {
+const BookingModal = ({ bookProducts, setBookProducts }) => {
     const [phoneNumber, setPhoneNumber] = useState({});
     const [metingLocation, setMettingLocation] = useState({})
     const {user}= useContext(AuthContext)
@@ -21,6 +21,7 @@ const BookingModal = ({ bookProducts }) => {
             phoneNumber,
             metingLocation
         }
+    //    console.log(booking)
         fetch(`${process.env.REACT_APP_WEB_LINK}/bookings`, {
             method: 'POST',
             headers: {
@@ -82,7 +83,8 @@ const BookingModal = ({ bookProducts }) => {
                     </div>
                     {/* <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p> */}
                     <div className="modal-action">
-                        <label onClick={productBooking}  htmlFor="BookingModal" className="btn">Book Now!</label>
+                        <label onClick={()=> setBookProducts(null)}  htmlFor="BookingModal" className="btn btn-primary">Cancel</label>
+                        <label onClick={productBooking}  htmlFor="BookingModal" className="btn btn-primary">Book Now!</label>
                     </div>
                 </div>
             </div>

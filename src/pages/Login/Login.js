@@ -1,9 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import { useForm } from "react-hook-form"
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { toast } from 'react-hot-toast'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+
 
 const Login = () => {
     const [signError, setSignError] = useState('')
@@ -22,8 +24,7 @@ const Login = () => {
                 setSignError(null)
                 toast.success("successfully Login")
                 const user = result.user;
-                console.log(user);
-                navigate(from, { replace: true });
+                accessToken(user?.email)
             })
             .catch((error) => {
                 console.log(error)
@@ -42,13 +43,35 @@ const Login = () => {
                 console.log(user)
                 // form.reset()
                 toast("Successfully Login Good job", { duration: 3000 })
-                //  navigate(from, { replace: true })
+                accessToken(user?.email)
             })
             .catch(err => {
                 setSignError(err.message)
                 console.log(err)
             })
     }
+
+
+
+
+    const accessToken = (email) => {
+            fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res=> res.json())
+            .then(data => {
+                console.log(data)
+                if(data.sendToken){
+                    localStorage.setItem("bb_token", data.sendToken)
+                    navigate(from, { replace: true });
+                }
+            })
+    } 
+
+
+
+
+
+
+
 
     return (
         <section className='container mx-auto py-16'>

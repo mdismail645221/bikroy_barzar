@@ -6,9 +6,10 @@ import { toast } from 'react-hot-toast'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const [regError, setRegError] = useState('')
+    const [signError, setSignError] = useState('')
     const { signInUser, googleSignIn } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
+
     const  navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -18,12 +19,16 @@ const Login = () => {
         console.log(data)
         signInUser(data.email, data.password)
             .then(result => {
+                setSignError(null)
+                toast.success("successfully Login")
                 const user = result.user;
-                // console.log(user);
+                console.log(user);
                 navigate(from, { replace: true });
             })
             .catch((error) => {
                 console.log(error)
+                toast.error(error.message)
+                setSignError(error.message)
             })
 
     }
@@ -32,6 +37,7 @@ const Login = () => {
     const handlegoogle = () => {
         googleSignIn()
             .then(result => {
+                setSignError(null)
                 const user = result.user;
                 console.log(user)
                 // form.reset()
@@ -39,7 +45,7 @@ const Login = () => {
                 //  navigate(from, { replace: true })
             })
             .catch(err => {
-                //  setError(err.message)
+                setSignError(err.message)
                 console.log(err)
             })
     }
@@ -49,7 +55,7 @@ const Login = () => {
             {/* title */}
             <div className='flex flex-col items-center justify-center my-8 text-3xl uppercase font-bold'>
                 <h3>Login</h3>
-                <p className='text-red-600 font-semibold py-4'>{regError}</p>
+                <p className='text-red-600 font-semibold py-4'>{signError}</p>
             </div>
             <form onSubmit={handleSubmit(handleLogin)} className='flex flex-col space-y-3 w-96 mx-auto border border-spacing-3 border-gray-200 rounded-lg shadow-lg px-6 py-8'>
                 {/* EMAIL field */}

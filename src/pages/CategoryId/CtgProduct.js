@@ -7,7 +7,7 @@ const CtgProduct = ({ ctg, handleProduct }) => {
     // console.log(ctg, setProducts)
     return (
         <div className="card bg-base-100 shadow-xl">
-            <figure><img src={ctg?.image} className="h-[400px]" alt="Shoes" /></figure>
+            <figure><img src={ctg?.image} className="h-[300px]" alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{ctg?.brand}{ctg?.name} </h2>
                 <div className='flex flex-wrap justify-between gap-4'>
@@ -23,7 +23,7 @@ const CtgProduct = ({ ctg, handleProduct }) => {
                     {/* <p><strong>Original Price:</strong> {ctg?.originalPrice}</p> */}
                 </div>
                 <div>
-                    <label onClick={() => handleProduct(ctg)} htmlFor="BookingModal" className="btn">Book Now</label>
+                    <label onClick={() => handleProduct(ctg)} htmlFor="BookingModal" className="btn btn-primary">Book Now</label>
                 </div>
             </div>
         </div>

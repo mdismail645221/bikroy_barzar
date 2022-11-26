@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
+import { format } from "date-fns";
+import {toast} from "react-hot-toast"
+import { useNavigate } from "react-router-dom";
 
 
 
 const AddProduct = () => {
     const [description, setDescription] = useState('')
-    const [purchaseDate, setPurchaseDate] = useState('')
-    // console.log(purchaseDate)
+    const date = new Date();
+    const formattedDate = format(date, "PP");
+    
+    const navigate = useNavigate()
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -19,10 +24,27 @@ const AddProduct = () => {
             conditionIype: data.gender,
             phone: data.phoneNumber,
             location: data.location,
-            purchaseDate: purchaseDate,
+            purchaseDate: formattedDate,
             description: description
         }
         console.log(addProductInfo)
+
+        // addProductInfo save into the database 
+        fetch(`${process.env.REACT_APP_WEB_LINK}/addProducts`, {
+            method: 'POST',
+            headers: {
+                'content-type': "application/json"
+            },
+            body: JSON.stringify(addProductInfo)
+        })
+        .then(res=> res.json())
+        .then(data=> {
+            console.log(data)
+            if(data.acknowledged){
+                toast.success("successfully Add a products")
+                navigate("/dashboard/myproducts");
+            }
+        })
     }
     
 
@@ -78,13 +100,13 @@ const AddProduct = () => {
                         <input {...register("location", { required: true })} type="text" placeholder="price" className="input input-bordered  w-full max-w-lg" />
                         {errors.location && <p className='text-red-600 font-semibold'>{errors?.location?.message}</p>}
                     </div>
-                    <div className="form-control">
+                    {/* <div className="form-control">
                         <label className="label">
                             <span className="label-text">Years of purchance</span>
                         </label>
-                        <input onChange={(e) => setPurchaseDate(e.target.value)} defaultValue="excellent" type="date" placeholder="price" className="input input-bordered  w-full max-w-lg" />
+                        <input defaultValue="excellent" type="date" placeholder="price" className="input input-bordered  w-full max-w-lg" />
                         {errors.dateOfYears && <p className='text-red-600 font-semibold'>{errors?.location?.message}</p>}
-                    </div>
+                    </div> */}
                 </div>
                 <div>
                     <label className="label">

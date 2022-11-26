@@ -55,16 +55,16 @@ const Login = () => {
 
 
     const accessToken = (email) => {
-            fetch(`http://localhost:5000/jwt?email=${email}`)
-            .then(res=> res.json())
+        fetch(`${process.env.REACT_APP_WEB_LINK}/jwt?email=${email}`)
+            .then(res => res.json())
             .then(data => {
                 console.log(data)
                 if(data.sendToken){
-                    localStorage.setItem("bb_token", data.sendToken)
-                    navigate(from, { replace: true });
+                    localStorage.setItem('bb_token', data.sendToken)
+                    // navigate(from, { replace: true });
                 }
             })
-    } 
+    }
 
 
 

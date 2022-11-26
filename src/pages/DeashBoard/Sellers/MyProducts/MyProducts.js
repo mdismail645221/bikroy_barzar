@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Loading from '../../../../components/Loading/Loading';
 
 const MyProducts = () => {
 
@@ -10,7 +11,11 @@ const MyProducts = () => {
     const { data: myProducts = [], isLoading } = useQuery({
         queryKey: ["myproducts"],
         queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_WEB_LINK}/addProducts`);
+            const res = await fetch(`${process.env.REACT_APP_WEB_LINK}/addProducts`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem("bb_token")}`
+                }
+            });
             const data = await res.json();
             return data;
         }
@@ -19,7 +24,11 @@ const MyProducts = () => {
     console.log("myProducts", myProducts)
 
 
-
+    if(isLoading){
+        return(
+            <Loading></Loading>
+        )
+    }
 
 
 

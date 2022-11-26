@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthProvider';
 import { UploadImgBB } from '../../hooks/UploadImgBB';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
     const [regError, setRegError] = useState('')
@@ -24,7 +24,6 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // console.log(userInfo)
                 UploadImgBB(imageFile).then(imgData => {
                     const userInfo = {
                         displayName: data.name,
@@ -57,8 +56,8 @@ const Register = () => {
 
 
     // handle Google signIn method implement====>
-     // google sign in 
-     const handlegoogle = () => {
+    // google sign in 
+    const handlegoogle = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
@@ -76,11 +75,13 @@ const Register = () => {
 
 
 
+
+
     // ======SavedUser in database======//
     const savedUser = (name, email, role) => {
         const userInfo = { name, email, role };
         console.log(userInfo)
-        fetch('http://localhost:5000/users',{
+        fetch(`${process.env.REACT_APP_WEB_LINK}/users`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -89,10 +90,25 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
+                accessToken(email)
                 console.log(data)
-                // setCreateUserEmail(email)
             })
 
+    }
+
+
+
+
+    const accessToken = (email) => {
+        fetch(`${process.env.REACT_APP_WEB_LINK}/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.sendToken){
+                    localStorage.setItem('bb_token', data.sendToken)
+                    // navigate(from, { replace: true });
+                }
+            })
     }
 
 
@@ -140,7 +156,7 @@ const Register = () => {
                 <div className='form-control w-full max-w-xs'>
                     <label className='label'><span className='label-text'>Choice your options:</span></label>
                     <select {...register("role", { required: "field is required" })} className="select select-bordered w-full max-w-xs">
-                        <option  value="buyers">buyers</option>
+                        <option value="buyers">buyers</option>
                         <option value="Sellers">Sellers</option>
                     </select>
                     {errors.password && <p className='text-red-600 font-semibold'>{errors?.password?.message}</p>}
@@ -150,16 +166,16 @@ const Register = () => {
                 <div className='w-2/3'>
                     <input className='btn btn-primary uppercase' type="submit" value="register now" />
                 </div>
-            <div>
                 <div>
-                    <p>You have already create account? <Link to="/login" className='text-blue-600 hover:underline'>Login</Link></p>
+                    <div>
+                        <p>You have already create account? <Link to="/login" className='text-blue-600 hover:underline'>Login</Link></p>
+                    </div>
+                    <div className="divider">OR</div>
+                    <div className='flex justify-center gap-6'>
+                        <FaGoogle onClick={handlegoogle} className='text-2xl cursor-pointer' />
+                        <FaGithub className='text-2xl cursor-pointer' />
+                    </div>
                 </div>
-                <div className="divider">OR</div>
-                <div className='flex justify-center gap-6'>
-                    <FaGoogle onClick={handlegoogle} className='text-2xl cursor-pointer' />
-                    <FaGithub className='text-2xl cursor-pointer' />
-                </div>
-            </div>
             </form>
         </section>
     );

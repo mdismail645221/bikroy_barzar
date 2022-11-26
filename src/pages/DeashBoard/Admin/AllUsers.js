@@ -8,7 +8,11 @@ const AllUsers = () => {
     const { data: allUsers = [], isLoading, refetch } = useQuery({
         queryKey: ["allUsers"],
         queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_WEB_LINK}/allusers`);
+            const res = await fetch(`${process.env.REACT_APP_WEB_LINK}/allusers`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem("bb_token")}`
+                }
+            });
             const data = await res.json();
             return data;
         }

@@ -42,7 +42,8 @@ const AddProduct = () => {
             fetch(`${process.env.REACT_APP_WEB_LINK}/addProducts`, {
                 method: 'POST',
                 headers: {
-                    'content-type': "application/json"
+                    'content-type': "application/json",
+                    authorization: `Bearer ${localStorage.getItem("bb_token")}`
                 },
                 body: JSON.stringify(addProductInfo)
             })

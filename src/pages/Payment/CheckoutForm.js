@@ -31,7 +31,7 @@ const CheckoutForm = () => {
                     },
                 }}
             />
-            <button type="submit" disabled={!stripe}>
+            <button className='btn btn-primary my-8' type="submit" disabled={!stripe}>
                 Pay
             </button>
         </form>

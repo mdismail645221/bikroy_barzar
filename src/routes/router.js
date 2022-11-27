@@ -10,6 +10,7 @@ import MyProducts from "../pages/DeashBoard/Sellers/MyProducts/MyProducts";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/home/Home/Home";
 import Login from "../pages/Login/Login";
+import Payment from "../pages/Payment/Payment";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 
@@ -68,6 +69,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/myorders',
                 element: <MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: async ({ params }) => await fetch(`${process.env.REACT_APP_WEB_LINK}/bookings/payment/${params.id}`)
             },
         ]
     }

@@ -1,7 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../context/AuthProvider';
+import Order from './Order';
 
 const MyOrders = () => {
 
@@ -21,7 +23,7 @@ const MyOrders = () => {
         return <Loading></Loading>
     }
 
-    console.log("myorders", myorders)
+    // console.log("myorders", myorders)
 
 
     return (
@@ -31,16 +33,10 @@ const MyOrders = () => {
             </div>
             <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
-                    myorders?.map(order => <div key={order?._id} className="card card-compact bg-base-100 shadow-xl">
-                        <figure><img src={order?.image} className="h-[300px]" alt="Shoes" /></figure>
-                        <div className="card-body">
-                            <h2 className="card-title">{order?.productsName}</h2>
-                            <p className='text-blue-600 font-semibold text-xl'>Price: {order?.resalePrice}</p>
-                            <div className="card-actions justify-end">
-                                <button className="btn btn-primary">Pay</button>
-                            </div>
-                        </div>
-                    </div>)
+                    myorders?.map(order => <Order 
+                        key={order?._id}
+                        order={order}
+                         ></Order>)
                 }
            </div>
        </section>

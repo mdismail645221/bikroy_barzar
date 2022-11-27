@@ -61,7 +61,7 @@ const Login = () => {
                 console.log(data)
                 if(data.sendToken){
                     localStorage.setItem('bb_token', data.sendToken)
-                    // navigate(from, { replace: true });
+                    navigate(from, { replace: true });
                 }
             })
     }

@@ -4,13 +4,18 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthProvider';
 import { UploadImgBB } from '../../hooks/UploadImgBB';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const Register = () => {
     const [regError, setRegError] = useState('')
     const { registerUser, updateUser, googleSignIn } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [options, setOption] = useState('buyers')
+
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
 
 
@@ -106,7 +111,7 @@ const Register = () => {
                 console.log(data)
                 if(data.sendToken){
                     localStorage.setItem('bb_token', data.sendToken)
-                    // navigate(from, { replace: true });
+                    navigate(from, { replace: true });
                 }
             })
     }

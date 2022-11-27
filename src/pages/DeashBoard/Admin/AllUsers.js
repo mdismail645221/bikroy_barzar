@@ -34,9 +34,9 @@ const AllUsers = () => {
         console.log(id);
         fetch(`${process.env.REACT_APP_WEB_LINK}/users/admin/${id}`, {
             method: 'PUT',
-            // headers: {
-            //     authorization: `Bearer ${localStorage.getItem('jwt_token')}`
-            // }
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('bb_token')}`
+            }
         })
         .then(res=> res.json())
         .then(data=> {
@@ -70,7 +70,7 @@ const AllUsers = () => {
     return (
         <section>
             <div>
-                <h3>All users</h3>
+                <h3 className='text-xl lg:text-2xl font-semibold my-6 text-center'>All Users </h3>
             </div>
             {/* table  */}
             <div className="overflow-x-auto">

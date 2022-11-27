@@ -16,11 +16,13 @@ const Payment = () => {
 
 
     return (
-        <div>
-            <h2>Payment for {}</h2>
-            <p>Please pay <strong>${paymentInfo?.resalePrice}</strong> For your Product Price</p>
-            <div className='card w-96 bg-base-100 shadow-xl'>
-                <div className='card-body'>
+        <div className='card w-96 bg-base-100 shadow-xl mx-auto my-[100px]'>
+            <div className='card-body'>
+                <h2><span className='text-xl font-semibold'> {paymentInfo.productsName}</span></h2>
+                <p>Please pay <strong>${paymentInfo?.resalePrice}</strong> For your Product Price</p>
+            </div>
+            <div className='card-body'>
+                <div>
                     <Elements stripe={stripePromise}>
                         <CheckoutForm paymentInfo={paymentInfo} />
                     </Elements>

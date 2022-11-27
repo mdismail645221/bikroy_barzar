@@ -5,11 +5,13 @@ import Loading from '../../components/Loading/Loading';
 
 const CheckoutForm = ({ paymentInfo }) => {
     const [loading, setLoading] = useState(false)
-    const [clientSecret, setClientSecret] = useState("");
     const [paymentError, setPaymentError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [transactionId, setTransactionId] = useState(null)
+    const [clientSecret, setClientSecret] = useState("");
     const stripe = useStripe();
     const elements = useElements();
-    const { resalePrice, userName, email } = paymentInfo;
+    const { userName, email } = paymentInfo;
 
 
 
@@ -29,7 +31,7 @@ const CheckoutForm = ({ paymentInfo }) => {
                 setClientSecret(data.clientSecret)
                 setLoading(false)
             });
-    }, [resalePrice]);
+    }, [paymentInfo]);
 
 
 
@@ -56,7 +58,7 @@ const CheckoutForm = ({ paymentInfo }) => {
         } else {
             setPaymentError(null)
         }
-
+        setSuccess(null)
         const { paymentIntent, error:confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -70,12 +72,20 @@ const CheckoutForm = ({ paymentInfo }) => {
             },
         );
 
+        if(confirmError){
+            setPaymentError(confirmError.message)
+        }
+
+        console.log(paymentIntent)
+        if(paymentIntent.status === "succeeded"){
+            setSuccess("Congratulations ! Your Payment Completed")
+            setTransactionId(paymentIntent.id)
+
+        }
+
 
     }
 
-    if(confirmError){
-        setPaymentError(confirmError.message)
-    }
 
 
     if (loading) {
@@ -105,7 +115,14 @@ const CheckoutForm = ({ paymentInfo }) => {
                     Pay
                 </button>
             </form>
-            {paymentError && <p>{paymentError}</p>}
+            {paymentError && <p className='text-red-500 md:text-lg'>{paymentError}</p>}
+            {
+                success && 
+                <div className='flex flex-wrap flex-col'>
+                    <p className='text-green-500 md:text-xl'>{success}</p>
+                    <p className='md:text-xl'><span className='underline'>Your TransactionId </span> <strong>{transactionId}</strong></p>
+                </div>
+            }
         </section>
     );
 };

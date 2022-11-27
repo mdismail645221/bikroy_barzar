@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/images/logo.png'
 import { AuthContext } from '../../context/AuthProvider';
 import { FaAlignLeft, FaBars } from "react-icons/fa";
 
@@ -16,16 +15,25 @@ const Navbar = () => {
         <li><Link
             to="/"
             className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-            aria-label="Sign up"
+            aria-label="Home"
             title="Home"
         >
             Home
         </Link>
         </li>
         <li><Link
+            to="/blog"
+            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+            aria-label="Blog"
+            title="Blog"
+        >
+            Blog
+        </Link>
+        </li>
+        <li><Link
             to="/dashboard"
             className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-            aria-label="Sign up"
+            aria-label="dashboard"
             title="Dashboard"
         >
             Dashboard

@@ -8,7 +8,7 @@ const BookingModal = ({ bookProducts, setBookProducts }) => {
     const [metingLocation, setMettingLocation] = useState({})
     const {user}= useContext(AuthContext)
     console.log('bookProducts', bookProducts)
-    const { name, originalPrice } = bookProducts;
+    const { name, originalPrice, image, resalePrice } = bookProducts;
 
 
 // Products the booking  info into the save database 
@@ -19,7 +19,9 @@ const BookingModal = ({ bookProducts, setBookProducts }) => {
             productsName: name,
             originalPrice,
             phoneNumber,
-            metingLocation
+            metingLocation,
+            image,
+            resalePrice
         }
     //    console.log(booking)
         fetch(`${process.env.REACT_APP_WEB_LINK}/bookings`, {

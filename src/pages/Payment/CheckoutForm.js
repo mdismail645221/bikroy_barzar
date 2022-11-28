@@ -11,7 +11,9 @@ const CheckoutForm = ({ paymentInfo }) => {
     const [clientSecret, setClientSecret] = useState("");
     const stripe = useStripe();
     const elements = useElements();
-    const { userName, email } = paymentInfo;
+    const { userName, email, resalePrice, _id } = paymentInfo;
+
+    console.log("paymentinfo" , paymentInfo)
 
 
 
@@ -59,6 +61,8 @@ const CheckoutForm = ({ paymentInfo }) => {
             setPaymentError(null)
         }
         setSuccess(null)
+        setSuccess("")
+        setTransactionId()
         const { paymentIntent, error:confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -75,11 +79,34 @@ const CheckoutForm = ({ paymentInfo }) => {
         if(confirmError){
             setPaymentError(confirmError.message)
         }
+        // console.log(paymentIntent)
 
-        console.log(paymentIntent)
         if(paymentIntent.status === "succeeded"){
-            setSuccess("Congratulations ! Your Payment Completed")
-            setTransactionId(paymentIntent.id)
+            // payment info save into database
+            const payment = {
+                price: resalePrice, 
+                email, 
+                bookingId: _id,
+                transactionId : paymentIntent.id,
+            }
+            // console.log("payment", payment)
+
+            fetch(`${process.env.REACT_APP_WEB_LINK}/payments`, {
+                method: 'POST',
+                headers: {
+                    'content-type': "application/json",
+                    authorization: `Bearer ${localStorage.getItem("bb_token")}`
+                },
+                body: JSON.stringify(payment)
+            })
+            .then(res=> res.json())
+            .then(data=> {
+                console.log("data", data)
+                if(data.acknowledged){
+                    setSuccess("Congratulations ! Your Payment Completed")
+                    setTransactionId(paymentIntent.id)
+                }
+            })
 
         }
 
@@ -119,8 +146,8 @@ const CheckoutForm = ({ paymentInfo }) => {
             {
                 success && 
                 <div className='flex flex-wrap flex-col'>
-                    <p className='text-green-500 md:text-xl'>{success}</p>
-                    <p className='md:text-xl'><span className='underline'>Your TransactionId </span> <strong>{transactionId}</strong></p>
+                    <p className='text-green-500 md:text-lg'>{success}</p>
+                    <p><span className='underline'>Your TransactionId </span> <strong>{transactionId}</strong></p>
                 </div>
             }
         </section>

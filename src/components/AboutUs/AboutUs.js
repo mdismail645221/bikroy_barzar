@@ -4,9 +4,9 @@ import aboutImg from '../../assets/images/aboutImg.jpg'
 const AboutUs = () => {
     return (
         <section className='container mx-auto my-24'>
-            <div className='about-container md:flex justify-between gap-4 p-8'>
+            <div className='about-container  md:flex flex-row-reverse justify-between gap-4 p-8'>
                 <div className='about-us-left w-full lg:w-1/2'>
-                    <div className='text-3xl font-semibold'>
+                    <div className='text-2xl lg:text-3xl font-semibold my-8'>
                         ABOUT US
                     </div>
                     <div>

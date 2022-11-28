@@ -13,12 +13,12 @@ const Carosel = () => {
                     <a href="#slide4" className="btn btn-circle">❮</a>
                     <a href="#slide2" className="btn btn-circle">❯</a>
                 </div>
-                <div className="hero bg-base-200 z-1">
+                <div className="hero bg-base-200 z-1 py-16">
                     <div className="hero-content flex-col lg:flex-row-reverse">
-                        <img src={phone1} className="max-w-sm h-[300px] md:h-[500px] rounded-lg shadow-2xl" alt='sampony' />
+                        <img src={phone1} className="max-w-sm h-[200px] md:h-[500px] rounded-lg shadow-2xl" alt='sampony' />
                         <div className='w-1/2'>
-                            <h1 className="text-5xl font-bold">SAMPNONY 2020</h1>
-                            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                            <h1 className="text-2xl lg:text-5xl font-bold">SAMPNONY 2020</h1>
+                            <p className="py-6">Symphony is a Bangladeshi brand that manufactures Android smartphones, feature phones and Android tablet computers or tabs.</p>
                             <button className="btn btn-primary">Get Started</button>
                         </div>
                     </div>
@@ -32,10 +32,10 @@ const Carosel = () => {
                 </div>
                 <div className="hero bg-base-200 z-1">
                     <div className="hero-content flex-col lg:flex-row-reverse">
-                        <img src={phone2} className="max-w-sm h-[300px] md:h-[500px] rounded-lg shadow-2xl bg-[F2F2F2]"  alt='oppo x pro'/>
+                        <img src={phone2} className="max-w-sm h-[200px] md:h-[500px] rounded-lg shadow-2xl bg-[F2F2F2]"  alt='oppo x pro'/>
                         <div className='w-1/2'>
-                            <h1 className="text-5xl font-bold">OPPO X PRO</h1>
-                            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                            <h1 className="text-2xl lg:text-5xl font-bold">OPPO X PRO</h1>
+                            <p className="py-6">OPPO, a mobile phone brand enjoyed by young people around the world, specializes in designing innovative mobile photography technology.</p>
                             <button className="btn btn-primary">Get Started</button>
                         </div>
                     </div>
@@ -50,10 +50,10 @@ const Carosel = () => {
 
                 <div className="hero bg-base-200 z-1">
                     <div className="hero-content flex-col lg:flex-row-reverse">
-                        <img src={phone3} className="max-w-sm h-[300px] md:h-[500px] rounded-lg shadow-2xl" alt='nokiya phone'/>
+                        <img src={phone3} className="max-w-sm h-[200px] md:h-[500px] rounded-lg shadow-2xl" alt='nokiya phone'/>
                         <div className='w-1/2'>
-                            <h1 className="text-5xl font-bold">NOKIYA A 250</h1>
-                            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                            <h1 className="text-2xl lg:text-5xl font-bold">NOKIYA A 250</h1>
+                            <p className="py-6">It is the largest mobile phone manufacturer in the world. Nokia manufactures portable electronic devices, mainly mobile phones.</p>
                             <button className="btn btn-primary">Get Started</button>
                         </div>
                     </div>

@@ -93,8 +93,8 @@ const AllUsers = () => {
                                 <td>{user?.email}</td>
                                 <td>{user?.role}</td>
                                 <td className='flex justify-center space-x-2'>
-                                    {user.role !== "admin" && <button onClick={()=> handleMakeAdmin(user?._id)}  className='btn btn-success'>Admin</button>}
-                                    <button onClick={() => deleteUser(user)} className='btn btn-primary'>Delete</button>
+                                    {user.role !== "admin" && <button onClick={()=> handleMakeAdmin(user?._id)}  className='btn btn-sm btn-success'>Admin</button>}
+                                    <button onClick={() => deleteUser(user)} className='btn btn-primary btn-sm'>Delete</button>
                                 </td>
                             </tr>)
                         }

@@ -27,7 +27,7 @@ const AddProduct = () => {
             console.log("imgData", imgData)
             const addProductInfo = {
                 userName: user?.displayName,
-                userEmail: user?.email,
+                email: user?.email,
                 productName: data.name,
                 price: data.price,
                 conditionIype: data.gender,

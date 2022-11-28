@@ -34,6 +34,25 @@ const AllSellars = () => {
     }
 
 
+        // handleMakeSeller
+        const handleMakeSellar = (user) => {
+            console.log(user);
+            fetch(`${process.env.REACT_APP_WEB_LINK}/addProducts/verified/${user?.email}`, {
+                method: 'PUT',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('bb_token')}`
+                }
+            })
+            .then(res=> res.json())
+            .then(data=> {
+                console.log(data)
+                if(data.modifiedCount){
+                    toast.success('ADMIN USER UPDATED GOOD JOB')
+                    refetch()
+                }
+            })
+        }
+
 
     if(isLoading){
         return(
@@ -58,7 +77,7 @@ const AllSellars = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Delete</th>
+                            <th className='text-center'>Verifed & Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,8 +88,10 @@ const AllSellars = () => {
                                     <td>{user?.name}</td>
                                     <td>{user?.email}</td>
                                     <td>{user?.role}</td>
-                                    <td>
-                                        <button onClick={() => deleteUser(user)} className='btn btn-primary'>Delete</button>
+                                    <td className='grid gap-5 grid-cols-2'>
+                                    {user.verified !== true && <button onClick={()=> handleMakeSellar(user)}  className='btn btn-sm btn-success text-white font-bold'>Not Verify</button>}
+                                    {user.verified == true && <button onClick={()=> handleMakeSellar(user)}  className='btn btn-sm bg-green-700 text-white font-bold'>Verified</button>}
+                                        <button onClick={() => deleteUser(user)} className='btn btn-sm btn-primary'>Delete</button>
                                     </td>
                                 </tr>)
                             }

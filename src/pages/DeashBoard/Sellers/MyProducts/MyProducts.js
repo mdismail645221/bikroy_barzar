@@ -37,7 +37,7 @@ const MyProducts = () => {
 
 
     return (
-        myProducts ?
+        myProducts.length !== 0 ?
             <section className='card-body'>
                 <div className='card-body'>
                     <h2 className='text-3xl font-semibold'>My Products</h2>

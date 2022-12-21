@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { FaAlignLeft, FaBars } from "react-icons/fa";
 import '../Navbar/Navbar.css'
@@ -10,44 +10,44 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
 
 
-
+   
 
     const menuItems = <>
-        <li><Link
+        <li><NavLink
             to="/"
-            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+            className={`${({ isActive }) => isActive ? "activeStyle" : undefined} inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none`}
             aria-label="Home"
             title="Home"
         >
             Home
-        </Link>
+        </NavLink>
         </li>
-        <li><Link
+        <li><NavLink
             to="/blog"
             className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
             aria-label="Blog"
             title="Blog"
         >
             Blog
-        </Link>
+        </NavLink>
         </li>
-        <li><Link
+        <li><NavLink
             to="/dashboard"
             className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
             aria-label="dashboard"
             title="Dashboard"
         >
             Dashboard
-        </Link>
+        </NavLink>
         </li>
         {
             user ?
 
                 <>
                     <li onClick={logOut}>
-                        <Link
+                        <NavLink
                             className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none'
-                        >Log Out</Link>
+                        >Log Out</NavLink>
                     </li>
                     <li>
                         <div className="avatar online placeholder">
@@ -59,14 +59,14 @@ const Navbar = () => {
                 </>
                 :
                 <li>
-                    <Link
+                    <NavLink
                         to="/login"
                         className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                         aria-label="Sign up"
                         title="Login"
                     >
                         Log In
-                    </Link>
+                    </NavLink>
                 </li>
         }
                 

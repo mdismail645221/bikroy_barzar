@@ -1,0 +1,8 @@
+.manuBar li a {
+    transition: 3ms;
+}
+.manuBar li a:hover{
+    border-bottom: 1px solid red;
+    outline: none;
+}
+

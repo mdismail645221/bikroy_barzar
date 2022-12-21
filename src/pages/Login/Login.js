@@ -18,7 +18,7 @@ const Login = () => {
 
 
     const handleLogin = (data) => {
-        console.log(data)
+        // console.log(data)
         signInUser(data.email, data.password)
             .then(result => {
                 setSignError(null)
@@ -55,6 +55,7 @@ const Login = () => {
 
 
     const accessToken = (email) => {
+        console.log(email)
         fetch(`${process.env.REACT_APP_WEB_LINK}/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {

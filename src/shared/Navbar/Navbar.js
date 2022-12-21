@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { FaAlignLeft, FaBars } from "react-icons/fa";
+import '../Navbar/Navbar.css'
 
 const Navbar = () => {
 
@@ -91,7 +92,7 @@ const Navbar = () => {
                             Bikroy Bazar
                         </span>
                     </a>
-                    <ul className="flex items-center hidden space-x-8 lg:flex">
+                    <ul className="flex items-center hidden space-x-8 lg:flex manuBar">
                         {menuItems}
                     </ul>
                     <div className="lg:hidden">
@@ -136,7 +137,7 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                     <nav>
-                                        <ul className="space-y-4 bg-[#F50808]">
+                                        <ul className="space-y-4 bg-[#6308f5c2npm]">
                                             {menuItems}
                                         </ul>
                                     </nav>

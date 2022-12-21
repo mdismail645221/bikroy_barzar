@@ -74,7 +74,7 @@ const Navbar = () => {
 
 
     return (
-        <div className='bg-[#F50808]'>
+        <div className='bg-[#6308f5c2]'>
             <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="relative flex items-center justify-between">
                     {/* */}
@@ -105,7 +105,7 @@ const Navbar = () => {
                         </button>
                         {isMenuOpen && (
                             <div className="absolute z-10 top-0 left-0 w-full">
-                                <div className="p-5 bg-[#F50808] border rounded shadow-sm">
+                                <div className="p-5 bg-[#6308f5c2] border rounded shadow-sm">
                                     <div className="flex items-center justify-between mb-4">
                                         <div>
                                             <a

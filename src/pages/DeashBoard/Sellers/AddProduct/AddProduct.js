@@ -39,7 +39,7 @@ const AddProduct = () => {
             }
             console.log(addProductInfo)
             // addProductInfo save into the database 
-            fetch(`${process.env.REACT_APP_WEB_LINK}/addProducts`, {
+            fetch(`https://bikroy-bazar.vercel.app/addProducts`, {
                 method: 'POST',
                 headers: {
                     'content-type': "application/json",

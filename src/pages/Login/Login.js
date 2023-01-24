@@ -56,7 +56,7 @@ const Login = () => {
 
     const accessToken = (email) => {
         console.log(email)
-        fetch(`${process.env.REACT_APP_WEB_LINK}/jwt?email=${email}`)
+        fetch(`https://bikroy-bazar.vercel.app/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

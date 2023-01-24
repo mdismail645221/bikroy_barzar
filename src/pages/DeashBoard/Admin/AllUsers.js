@@ -5,10 +5,10 @@ import toast from 'react-hot-toast';
 
 const AllUsers = () => {
 
-    const { data: allUsers = [], isLoading, refetch } = useQuery({
+    const { data: everyUsers = [], isLoading, refetch } = useQuery({
         queryKey: ["allUsers"],
         queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_WEB_LINK}/allusers`, {
+            const res = await fetch(`https://bikroy-bazar.vercel.app/allusers`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem("bb_token")}`
                 }
@@ -18,7 +18,7 @@ const AllUsers = () => {
         }
     })
 
-    // console.log(allUsers);
+    // console.log(everyUsers);
 
 
     if (isLoading) {
@@ -32,7 +32,7 @@ const AllUsers = () => {
     // handleMakeAdmin
     const handleMakeAdmin = (id) => {
         console.log(id);
-        fetch(`${process.env.REACT_APP_WEB_LINK}/users/admin/${id}`, {
+        fetch(`https://bikroy-bazar.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('bb_token')}`
@@ -50,8 +50,8 @@ const AllUsers = () => {
 
 
     const deleteUser = (user) => {
-        console.log(user)
-        fetch(`${process.env.REACT_APP_WEB_LINK}/users/${user._id}`, {
+        console.log({user})
+        fetch(`https://bikroy-bazar.vercel.app/users/${user._id}`, {
             method: 'DELETE'
         })
         .then(res=> res.json())
@@ -87,7 +87,7 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            allUsers.map((user, idx) => <tr key={user._id}>
+                            everyUsers.map((user, idx) => <tr key={user._id}>
                                 <th>{idx + 1}</th>
                                 <td>{user?.name}</td>
                                 <td>{user?.email}</td>

@@ -9,7 +9,8 @@ const AllSellars = () => {
     const {data:allsellars, refetch, isLoading} = useQuery({
         queryKey: ["allsellars","role=Sellers"],
         queryFn: async()=>  {
-                const res = await fetch(`${process.env.REACT_APP_WEB_LINK}/users/allsellars?role=Sellers`);
+            // https://bikroy-bazar.vercel.app
+                const res = await fetch(`https://bikroy-bazar.vercel.app/users/allsellars?role=Sellers`);
                 const data = await res.json();
                 return data;
         }
@@ -20,7 +21,7 @@ const AllSellars = () => {
 
     const deleteUser = (user) => {
         console.log(user)
-        fetch(`${process.env.REACT_APP_WEB_LINK}/users/${user._id}`, {
+        fetch(`https://bikroy-bazar.vercel.app/users/${user._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -37,7 +38,7 @@ const AllSellars = () => {
         // handleMakeSeller
         const handleMakeSellar = (user) => {
             console.log(user);
-            fetch(`${process.env.REACT_APP_WEB_LINK}/addProducts/verified/${user?.email}`, {
+            fetch(`https://bikroy-bazar.vercel.app/addProducts/verified/${user?.email}`, {
                 method: 'PUT',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('bb_token')}`

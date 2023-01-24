@@ -24,7 +24,7 @@ const BookingModal = ({ bookProducts, setBookProducts }) => {
             resalePrice
         }
     //    console.log(booking)
-        fetch(`${process.env.REACT_APP_WEB_LINK}/bookings`, {
+        fetch(`https://bikroy-bazar.vercel.app/bookings`, {
             method: 'POST',
             headers: {
                 "content-type" : "application/json"

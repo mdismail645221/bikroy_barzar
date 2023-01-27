@@ -10,7 +10,7 @@ const AllSellars = () => {
     const {data:allsellars, refetch, isLoading} = useQuery({
         queryKey: ["allsellars","role=Sellers"],
         queryFn: async()=>  {
-                const res = await fetch(`http://localhost:5000/users/allsellars?role=Sellers`);
+                const res = await fetch(`https://bikroy-bazar.vercel.app/users/allsellars?role=Sellers`);
                 const data = await res.json();
                 return data;
         }

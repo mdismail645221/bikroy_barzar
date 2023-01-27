@@ -13,7 +13,7 @@ const MyProducts = () => {
     const { data: myProducts = [], isLoading } = useQuery({
         queryKey: ["myproducts", user.email],
         queryFn: async () => {
-            const res = await fetch(`https://bikroy-bazar.vercel.app/addProducts?email=${user?.email}`, {
+            const res = await fetch(`http://localhost:5000/addProducts?email=${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem("bb_token")}`
                 }

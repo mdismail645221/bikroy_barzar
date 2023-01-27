@@ -13,7 +13,7 @@ const CheckoutForm = ({ paymentInfo }) => {
     const elements = useElements();
     const { userName, email, resalePrice, _id } = paymentInfo;
 
-    console.log("paymentinfo" , paymentInfo)
+    // console.log("paymentinfo" , paymentInfo)
 
 
 

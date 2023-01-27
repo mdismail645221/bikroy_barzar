@@ -18,7 +18,7 @@ const AllUsers = () => {
         }
     })
 
-    // console.log(everyUsers);
+    console.log({everyUsers});
 
 
     if (isLoading) {

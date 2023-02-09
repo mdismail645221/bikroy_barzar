@@ -56,12 +56,12 @@ const Login = () => {
 
     const accessToken = (email) => {
         console.log(email)
-        fetch(`https://bikroy-bazar.vercel.app/jwt?email=${email}`)
+        fetch(`http://localhost:5000/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if(data.sendToken){
-                    localStorage.setItem('bb_token', data.sendToken)
+                    console.log("data.sendToken", data.sendToken)
+                    localStorage.setItem("BB_TOKEN", data.sendToken)
                     navigate(from, { replace: true });
                 }
             })

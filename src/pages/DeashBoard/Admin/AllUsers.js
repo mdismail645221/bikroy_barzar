@@ -6,11 +6,11 @@ import toast from 'react-hot-toast';
 const AllUsers = () => {
 
     const { data: everyUsers = [], isLoading, refetch } = useQuery({
-        queryKey: ["allUsers"],
+        queryKey: ["allUsers",],
         queryFn: async () => {
-            const res = await fetch(`https://bikroy-bazar.vercel.app/allusers`, {
+            const res = await fetch(`${process.env.REACT_APP_HOST_LINK}/allusers`, {
                 headers: {
-                    authorization: `Bearer ${localStorage.getItem("bb_token")}`
+                    authorization: `Bearer ${localStorage.getItem("BB_TOKEN")}`
                 }
             });
             const data = await res.json();
@@ -32,10 +32,10 @@ const AllUsers = () => {
     // handleMakeAdmin
     const handleMakeAdmin = (id) => {
         console.log(id);
-        fetch(`https://bikroy-bazar.vercel.app/users/admin/${id}`, {
+        fetch(`${process.env.REACT_APP_HOST_LINK}/users/admin/${id}`, {
             method: 'PUT',
             headers: {
-                authorization: `Bearer ${localStorage.getItem('bb_token')}`
+                authorization: `Bearer ${localStorage.getItem("BB_TOKEN")}`
             }
         })
         .then(res=> res.json())
@@ -51,7 +51,7 @@ const AllUsers = () => {
 
     const deleteUser = (user) => {
         console.log({user})
-        fetch(`https://bikroy-bazar.vercel.app/users/${user._id}`, {
+        fetch(`${process.env.REACT_APP_HOST_LINK}/users/${user._id}`, {
             method: 'DELETE'
         })
         .then(res=> res.json())

@@ -8,7 +8,7 @@ const Categories = () => {
     const { data:categories=[], isLoading}= useQuery({
         queryKey: ["categories"],
         queryFn: async()=> {
-            const res = await fetch(`https://bikroy-bazar.vercel.app/categories`);
+            const res = await fetch(`${process.env.REACT_APP_HOST_LINK}/categories`);
             const data = await res.json();
             return data;
         }

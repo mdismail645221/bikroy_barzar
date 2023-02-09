@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoute><CategoryId></CategoryId></PrivateRoute>,
-                loader: async ({ params }) => await fetch(`https://bikroy-bazar.vercel.app/products/${params.id}`)
+                loader: async ({ params }) => await fetch(`${process.env.REACT_APP_HOST_LINK}/products/${params.id}`)
             },
             {
                 path: '/blog',

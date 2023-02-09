@@ -110,7 +110,7 @@ const Register = () => {
             .then(data => {
                 console.log(data)
                 if(data.sendToken){
-                    localStorage.setItem('bb_token', data.sendToken)
+                    localStorage.setItem("BB_TOKEN", data.sendToken)
                     navigate(from, { replace: true });
                 }
             })

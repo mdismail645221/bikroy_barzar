@@ -20,11 +20,11 @@ const CheckoutForm = ({ paymentInfo }) => {
     useEffect(() => {
         setLoading(true)
         // Create PaymentIntent as soon as the page loads
-        fetch(`https://bikroy-bazar.vercel.app/create-payment-intent`, {
+        fetch(`${process.env.REACT_APP_HOST_LINK}/create-payment-intent`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                authorization: `Bearer ${localStorage.getItem("bb_token")}`
+                authorization: `Bearer ${localStorage.getItem("BB_TOKEN")}`
             },
             body: JSON.stringify(paymentInfo),
         })
@@ -91,11 +91,11 @@ const CheckoutForm = ({ paymentInfo }) => {
             }
             // console.log("payment", payment)
 
-            fetch(`https://bikroy-bazar.vercel.app/payments`, {
+            fetch(`${process.env.REACT_APP_HOST_LINK}/payments`, {
                 method: 'POST',
                 headers: {
                     'content-type': "application/json",
-                    authorization: `Bearer ${localStorage.getItem("bb_token")}`
+                    authorization: `Bearer ${localStorage.getItem("BB_TOKEN")}`
                 },
                 body: JSON.stringify(payment)
             })

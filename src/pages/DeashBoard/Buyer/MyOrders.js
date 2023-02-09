@@ -12,7 +12,7 @@ const MyOrders = () => {
     const {data:myorders, isLoading} = useQuery({
         queryKey: ["myorders", user?.email],
         queryFn: async()=> {
-            const res = await fetch(`https://bikroy-bazar.vercel.app/bookings?email=${user?.email}`);
+            const res = await fetch(`${process.env.REACT_APP_HOST_LINK}/bookings?email=${user?.email}`);
             const data= await res.json();
             return data;
         }

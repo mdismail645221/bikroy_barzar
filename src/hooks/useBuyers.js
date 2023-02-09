@@ -9,7 +9,7 @@ export const useBuyers = email => {
 
     useEffect(() => {
         if (email) {
-            fetch(`https://bikroy-bazar.vercel.app/users/admin/${email}`)
+            fetch(`${process.env.REACT_APP_HOST_LINK}/users/admin/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log("email", data)

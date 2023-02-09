@@ -10,7 +10,11 @@ const AllSellars = () => {
     const {data:allsellars, refetch, isLoading} = useQuery({
         queryKey: ["allsellars","role=Sellers"],
         queryFn: async()=>  {
-                const res = await fetch(`https://bikroy-bazar.vercel.app/users/allsellars?role=Sellers`);
+            const res = await fetch(`${process.env.REACT_APP_HOST_LINK}/users/allsellars?role=Sellers`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem("BB_TOKEN")}`
+                }
+            });
                 const data = await res.json();
                 return data;
         }
@@ -21,7 +25,7 @@ const AllSellars = () => {
 
     const deleteUser = (user) => {
         console.log(user)
-        fetch(`https://bikroy-bazar.vercel.app/users/${user._id}`, {
+        fetch(`${process.env.REACT_APP_HOST_LINK}/users/${user._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -38,10 +42,10 @@ const AllSellars = () => {
         // handleMakeSeller   Verified sellar email 
         const handleMakeSellar = (user) => {
             console.log(user);
-            fetch(`https://bikroy-bazar.vercel.app/addProducts/verified/${user?.email}`, {
+            fetch(`${process.env.REACT_APP_HOST_LINK}/addProducts/verified/${user?.email}`, {
                 method: 'PUT',
                 headers: {
-                    authorization: `Bearer ${localStorage.getItem('bb_token')}`
+                    authorization: `Bearer ${localStorage.getItem("BB_TOKEN")}`
                 }
             })
             .then(res=> res.json())

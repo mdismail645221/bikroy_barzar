@@ -39,11 +39,11 @@ const AddProduct = () => {
             }
             console.log(addProductInfo)
             // addProductInfo save into the database 
-            fetch(`https://bikroy-bazar.vercel.app/addProducts`, {
+            fetch(`${process.env.REACT_APP_HOST_LINK}/addProducts`, {
                 method: 'POST',
                 headers: {
                     'content-type': "application/json",
-                    authorization: `Bearer ${localStorage.getItem("bb_token")}`
+                    authorization: `Bearer ${localStorage.getItem("BB_TOKEN")}`
                 },
                 body: JSON.stringify(addProductInfo)
             })

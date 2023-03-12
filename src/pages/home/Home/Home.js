@@ -7,7 +7,7 @@ import Carosel from '../Carosel/Carosel';
 
 const Home = () => {
     return (
-        <div>
+        <div className='mt-24'>
            <Carosel></Carosel>
            <AboutUs></AboutUs>
            <Categories></Categories>

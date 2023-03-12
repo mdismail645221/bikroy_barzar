@@ -21,14 +21,12 @@ const Register = () => {
 
     const handleRegister = data => {
         console.log(data)
-        // const [imgURL, setImgURL] = useState()
-        const imageFile = (data.image[0])
+        let imageFile = (data.image[0])
 
         // signin method  ===>
         registerUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 UploadImgBB(imageFile).then(imgData => {
                     const userInfo = {
                         displayName: data.name,
@@ -36,11 +34,7 @@ const Register = () => {
                     }
                     updateUser(userInfo)
                         .then(() => {
-                            // savedUser(data.name, data.email)
                             toast.success("successfully Registered. Good Job")
-                            // const option ={
-                            //     options : data.options
-                            // }
                             savedUser(data.name, data.email, data.role)
                         })
                         .catch(err => {
@@ -52,8 +46,6 @@ const Register = () => {
 
             })
             .catch((e) => {
-                // setSignError(e.message);
-                // toast.error(e.message)
                 console.log(e.message);
             })
 
@@ -84,20 +76,23 @@ const Register = () => {
 
     // ======SavedUser in database======//
     const savedUser = (name, email, role) => {
-        const userInfo = { name, email, role };
-        console.log(userInfo)
-        fetch(`${process.env.REACT_APP_WEB_LINK}/users`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(userInfo)
-        })
-            .then(res => res.json())
-            .then(data => {
-                accessToken(email)
-                console.log(data)
+        const savedUser = { name, email, role };
+        console.log("savedUser", savedUser)
+        if(savedUser){
+            fetch(`http://localhost:5000/users`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(savedUser)
             })
+                .then(res => res.json())
+                .then(data => {
+                    toast.success("Successfully ")
+                    accessToken(email)
+                    console.log(data)
+                })
+        }
 
     }
 

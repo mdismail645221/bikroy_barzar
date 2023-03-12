@@ -55,7 +55,7 @@ const Login = () => {
 
 
     const accessToken = (email) => {
-        console.log(email)
+        console.log("accessToken", email)
         fetch(`http://localhost:5000/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {

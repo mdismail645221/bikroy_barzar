@@ -2,10 +2,9 @@
 
 // IMG BB WEBSITE UPLOAD THE IMG AND GET THE ORGINAL IMG URL
 export const UploadImgBB  = async imgfile => {
-    
-    // const url = `https://api.imgbb.com/1/upload?key=ce047b9889c0df917aff170b7da91ab9`;
-    // const url = `https://api.imgbb.com/1/upload?key=ce047b9889c0df917aff170b7da91ab9`;
-    const url = `https://api.imgbb.com/1/upload?key=ce047b9889c0df917aff170b7da91ab9`
+    console.log('uploadImgBb', imgfile)
+    const imgHostKey = process.env.REACT_APP_IMGBB_API_KEY;
+    const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`;
     const fromData = new FormData();
     fromData.append("image", imgfile);
     const res = await fetch(url, {
@@ -13,5 +12,6 @@ export const UploadImgBB  = async imgfile => {
         body: fromData
     })
     const data = await res.json()
+    console.log("img photo data", data)
     return data
 }

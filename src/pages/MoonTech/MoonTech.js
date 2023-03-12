@@ -35,7 +35,7 @@ const MoonTech = () => {
     };
     return (
         <section className='container mx-auto mb-24'>
-            <h3 className='text-center text-3xl font-bold'>Moon Teach Products</h3>
+            <h3 className='text-center text-3xl font-bold'>Teach Desktop Products</h3>
             <Carousel
                 // swipeable={true}
                 // draggable={false}

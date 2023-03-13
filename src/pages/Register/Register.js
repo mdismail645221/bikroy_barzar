@@ -10,7 +10,7 @@ const Register = () => {
     const [regError, setRegError] = useState('')
     const { registerUser, updateUser, googleSignIn } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [options, setOption] = useState('buyers')
+    const [userRole, setUserRole] = useState('buyers')
 
 
     const navigate = useNavigate();
@@ -61,7 +61,7 @@ const Register = () => {
                 console.log(user)
                 // form.reset()
                 toast("Successfully Login Good job", { duration: 3000 })
-                savedUser(user.name, user.email, options)
+                savedUser(user.name, user.email, userRole)
                 //  navigate(from, { replace: true })
             })
             .catch(err => {
@@ -113,7 +113,7 @@ const Register = () => {
 
 
     return (
-        <section className='container mx-auto py-16'>
+        <section className='container mx-auto pb-16 pt-24'>
             {/* title */}
             <div className='flex flex-col items-center justify-center my-8 text-3xl uppercase font-bold'>
                 <h3>Register</h3>
@@ -154,7 +154,7 @@ const Register = () => {
                 </div>
                 {/* Opition choice buyers & sellers*/}
                 <div className='form-control w-full max-w-xs'>
-                    <label className='label'><span className='label-text'>Choice your options:</span></label>
+                    <label className='label'><span className='label-text'>Choice your userRole:</span></label>
                     <select {...register("role", { required: "field is required" })} className="select select-bordered w-full max-w-xs">
                         <option value="buyers">buyers</option>
                         <option value="Sellers">Sellers</option>

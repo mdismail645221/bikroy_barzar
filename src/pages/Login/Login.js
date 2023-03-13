@@ -75,7 +75,7 @@ const Login = () => {
 
 
     return (
-        <section className='container mx-auto py-16'>
+        <section className='container mx-auto pb-16 pt-24'>
             {/* title */}
             <div className='flex flex-col items-center justify-center my-8 text-3xl uppercase font-bold'>
                 <h3>Login</h3>

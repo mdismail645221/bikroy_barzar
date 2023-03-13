@@ -76,7 +76,7 @@ const Navbar = () => {
 
     return (
         <div className='bg-[#023430] fixed top-0 left-0 z-10 w-full'>
-            <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+            <div className="py-1 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="relative flex items-center justify-between">
                     {/* */}
                     <label htmlFor="dashboard-drawer" className="btn btn-primary drawer-button lg:hidden"><FaAlignLeft className='w-8 h-8 text-white font-semibold' /> </label>

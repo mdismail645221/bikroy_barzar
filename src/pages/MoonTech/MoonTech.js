@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import '../MoonTech/MoonTech.css'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { toast } from 'react-hot-toast';
 
 
 
@@ -18,11 +20,11 @@ const MoonTech = () => {
         superLargeDesktop: {
             // the naming can be any, depends on you.
             breakpoint: { max: 4000, min: 1024 },
-            items: 5
+            items: 4
         },
         desktop: {
             breakpoint: { max: 1024, min: 800 },
-            items: 4
+            items: 3
         },
         tablet: {
             breakpoint: { max: 800, min: 464 },
@@ -33,12 +35,20 @@ const MoonTech = () => {
             items: 1
         }
     };
+
+    let emoji = <span>&#128512;</span>
+    const handleBooking = () => {
+        toast.success(<><span>Functionality will coming soon. {emoji}</span></>)
+    }
+
+
     return (
-        <section className='container mx-auto mb-24'>
-            <h3 className='text-center text-3xl font-bold'>Teach Desktop Products</h3>
+        <section className='mb-24 bg-[#FF6347] moontechContainer'>
+            <h3 className='text-center text-3xl font-bold text-white pb-10'>Teach Desktop Products</h3>
             <Carousel
                 // swipeable={true}
                 // draggable={false}
+                className='gap container mx-auto'
                 responsive={responsive}
                 infinite={true}
                 autoPlay={true}
@@ -51,12 +61,13 @@ const MoonTech = () => {
                 {
                     moonTech.map((moon, i) => {
                         return (
-                            <div key={i} className="card card-compact w-full bg-base-100 shadow-xl">
+                            <div key={i} className="card card-compact w-full h-[600px] bg-base-100 shadow-xl">
                                 <figure><img src={moon?.image} alt="Shoes" /></figure>
                                 <div className="card-body">
-                                    <h2 className="card-title text-md">{moon?.model.length < 20 ? <br></br> : moon?.model}</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                                    <div className="card-actions justify-end">
+                                    <h2 className="card-title text-md text-center justify-center">{moon?.model.length < 20 ? <br></br> : moon?.model}</h2>
+                                    <p className='text-center'>{moon?.keyFeature.map(feature => <span>{feature}</span>)}</p>
+                                    <h2 className="card-title text-md justify-center">Price: {moon?.price}</h2>
+                                    <div className="card-actions justify-end" onClick={handleBooking}>
                                         <button className="btn btn-primary">Buy Now</button>
                                     </div>
                                 </div>

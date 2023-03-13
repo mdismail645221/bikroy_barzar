@@ -1,0 +1,8 @@
+.moontechContainer .react-multi-carousel-track{
+    gap: 1em
+}
+.moontechContainer{
+    padding: 2rem 0;
+    border: 1px solid var(--btn-color);
+    border-radius: 20px;
+}

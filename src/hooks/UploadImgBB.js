@@ -12,6 +12,6 @@ export const UploadImgBB  = async imgfile => {
         body: fromData
     })
     const data = await res.json()
-    console.log("img photo data", data)
+    // console.log("img photo data", data)
     return data
 }

@@ -1,11 +1,20 @@
 .submitContainer{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 .inputContainer{
     display: flex;
     flex-direction: column;
+    margin: 2rem 0;
+    margin-bottom: 0;
+    gap: 2rem;
+}
+
+.inputContainer button{
+    width: 150px;
+    margin: auto;
 }

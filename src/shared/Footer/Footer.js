@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div >
-            <footer className="footer bg-[#023430] p-10 text-white  container mx-auto">
+        <div className='bg-[#023430]' >
+            <footer className="footer  p-10 text-white  container mx-auto">
                 <div>
                     <span className="footer-title">Services</span>
                     <a href="/a" className="link link-hover">Realme Smart Phone</a>
@@ -26,7 +26,7 @@ const Footer = () => {
                     <a href="/a" className="link link-hover">Mongodb Database etc.</a>
                 </div>
             </footer>
-            <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300 container mx-auto">
+            <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
                 <div className="items-center grid-flow-col">
                     <p>Bikroy Bazar Company Limited<br /> 	&#169; Mohammad Ismail Hossain -2022 &#128525;</p>
                 </div>

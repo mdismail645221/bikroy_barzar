@@ -2,8 +2,8 @@ import React from 'react';
 
 const LaptopHeroSection = () => {
     return (
-        <section className='mb-24'>
-            <div className="hero h-5/6 bg-base-200">
+        <section className='mb-24 py-10 bg-base-200'>
+            <div className="hero h-5/6">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <img src="https://i.ibb.co/vYjbXmK/woman-Laptop-User.png" className="max-w-sm rounded-lg shadow-2xl" />
                     <div>

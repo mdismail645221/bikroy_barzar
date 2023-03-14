@@ -1,0 +1,11 @@
+.submitContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+}

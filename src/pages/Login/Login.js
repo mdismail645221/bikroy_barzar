@@ -56,7 +56,7 @@ const Login = () => {
 
     const accessToken = (email) => {
         console.log("accessToken", email)
-        fetch(`http://localhost:5000/jwt?email=${email}`)
+        fetch(`https://bikroy-bazar-server-pink.vercel.app/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 if(data.sendToken){

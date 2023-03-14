@@ -51,17 +51,20 @@ const AllUsers = () => {
 
     const deleteUser = (user) => {
         console.log({user})
-        fetch(`${process.env.REACT_APP_HOST_LINK}/users/${user._id}`, {
-            method: 'DELETE'
-        })
-        .then(res=> res.json())
-        .then(data => {
-            if(data.acknowledged > 0){
-                // console.log(data)
-                toast.success(`Successfully delete ${user?.email}`)
-                refetch()
-            }
-        })
+        if(window.confirm("Are you sure? deleted")){
+            fetch(`${process.env.REACT_APP_HOST_LINK}/users/${user._id}`, {
+                method: 'DELETE'
+            })
+            .then(res=> res.json())
+            .then(data => {
+                if(data.acknowledged > 0){
+                    // console.log(data)
+                    toast.success(`Successfully delete ${user?.email}`)
+                    refetch()
+                }
+            })
+        }
+        
     }
 
 

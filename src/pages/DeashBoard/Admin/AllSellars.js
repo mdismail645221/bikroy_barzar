@@ -25,6 +25,7 @@ const AllSellars = () => {
 
     const deleteUser = (user) => {
         console.log(user)
+       if(window.confirm("Are you sure? Delete seller")){
         fetch(`${process.env.REACT_APP_HOST_LINK}/users/${user._id}`, {
             method: 'DELETE'
         })
@@ -36,6 +37,7 @@ const AllSellars = () => {
                     refetch()
                 }
             })
+       }
     }
 
 

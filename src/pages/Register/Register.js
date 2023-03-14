@@ -79,7 +79,7 @@ const Register = () => {
         const savedUser = { name, email, role };
         console.log("savedUser", savedUser)
         if(savedUser){
-            fetch(`http://localhost:5000/users`, {
+            fetch(`https://bikroy-bazar-server-pink.vercel.app/users`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

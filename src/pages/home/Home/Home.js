@@ -3,6 +3,7 @@ import AboutUs from '../../../components/AboutUs/AboutUs';
 import Categories from '../../../components/Categories/Categories';
 import LaptopHeroSection from '../../LaptopHeroSection/LaptopHeroSection';
 import MoonTech from '../../MoonTech/MoonTech';
+import SubmitForm from '../../SubmitForm/SubmitForm';
 import Carosel from '../Carosel/Carosel';
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
            <Categories></Categories>
             <LaptopHeroSection/>
            <MoonTech/>
+           <SubmitForm/>
         </div>
     );
 };

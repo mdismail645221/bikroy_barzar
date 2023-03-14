@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
-import { FaAlignLeft, FaBars } from "react-icons/fa";
+import { FaChevronRight, FaBars, FaChevronLeft } from "react-icons/fa";
 import '../Navbar/Navbar.css'
 
 const Navbar = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isdrawer, setIsdrawer] = useState(false)
     const { user, logOut } = useContext(AuthContext)
 
 
@@ -79,7 +80,7 @@ const Navbar = () => {
             <div className="py-1 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="relative flex items-center justify-between">
                     {/* */}
-                    <label htmlFor="dashboard-drawer" className="btn btn-primary drawer-button lg:hidden"><FaAlignLeft className='w-8 h-8 text-white font-semibold' /> </label>
+                    <label onClick={()=>setIsdrawer(!isdrawer)} htmlFor="dashboard-drawer" className=" drawer-button cursor-pointer lg:hidden">{isdrawer ? <span className='text-white font-medium flex items-center'>Drawer <FaChevronRight/></span> : <span className='text-white font-medium flex items-center'><FaChevronLeft/>Drawer</span>} </label>
                     <a
                         href="/"
                         aria-label="Company"
@@ -124,7 +125,7 @@ const Navbar = () => {
                                             <button
                                                 aria-label="Close Menu"
                                                 title="Close Menu"
-                                                className="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                                className="p-2 -mt-2 -mr-2 transition duration-200 rounded bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                                 onClick={() => setIsMenuOpen(false)}
                                             >
                                                 <svg className="w-5 text-gray-600" viewBox="0 0 24 24">

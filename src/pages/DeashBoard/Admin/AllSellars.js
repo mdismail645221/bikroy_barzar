@@ -98,7 +98,7 @@ const AllSellars = () => {
                                     <td className='grid gap-5 grid-cols-2'>
                                     {user.seller !== "verified" && <button onClick={()=> handleMakeSellar(user)}  className='btn btn-sm btn-success text-white font-bold'>Not Verify</button>}
                                     {user.seller === "verified" && <button onClick={()=> handleMakeSellar(user)}  className='btn btn-sm bg-green-700 text-white font-bold'>Verified</button>}
-                                        <button onClick={() => deleteUser(user)} className='btn btn-sm btn-primary'>Delete</button>
+                                        <button onClick={() => deleteUser(user)} className='btn btn-sm btn-warning'>Delete</button>
                                     </td>
                                 </tr>)
                             }
